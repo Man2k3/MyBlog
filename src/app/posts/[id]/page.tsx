@@ -4,12 +4,8 @@ import { Post } from "@/types/post";
 import { promises as fs } from "fs"; // Import fs từ Node.js
 import path from "path";
 import Link from "next/link";
-async function getPost(id: string): Promise<Post | undefined> {
-  const filePath = path.join(process.cwd(), "public/data/posts.json");
-  const fileContents = await fs.readFile(filePath, "utf8");
-  const posts: Post[] = JSON.parse(fileContents);
-  return posts.find((p) => p.id === parseInt(id));
-}
+import { getPost } from "@/app/action";
+
 export async function generateStaticParams() {
   const filePath = path.join(process.cwd(), "public/data/posts.json");
   const fileContents = await fs.readFile(filePath, "utf8");

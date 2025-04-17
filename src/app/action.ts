@@ -5,7 +5,16 @@ import { promises as fs } from "fs";
 import { Post } from "@/types/post";
 import { auth } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
-
+export async function getPosts(): Promise<Post[]> {
+  const filePath = path.join(process.cwd(), "public/data/posts.json");
+      const fileContents = await fs.readFile(filePath, "utf8");
+      const posts: Post[] = JSON.parse(fileContents);
+      return posts;
+}
+export async function getPost(id: string): Promise<Post | undefined> {
+  const posts = await getPosts();
+  return posts.find((p) => p.id === parseInt(id));
+}
 export async function  createPost(formData: FormData) {
 
   

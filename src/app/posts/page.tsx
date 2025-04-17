@@ -1,16 +1,8 @@
 import { PostCard } from "@/components/ui/post-card";
 import SearchForm from "@/components/ui/search-form";
 import type {Post} from "@/types/post";
-import { promises as fs } from "fs"; // Import fs từ Node.js
-import path from "path";
-async function getPosts(): Promise<Post[]> {
-  // const res = await fetch("http://localhost:3000/data/posts.json"); 
-  // return res.json();
-  const filePath = path.join(process.cwd(), "public/data/posts.json");
-      const fileContents = await fs.readFile(filePath, "utf8");
-      const posts: Post[] = JSON.parse(fileContents);
-      return posts;
-}
+import { getPosts } from "../action";
+
 export default async function Post({searchParams,}: { searchParams: Promise<{ q?: string }> }) {
   const posts = await getPosts();
   const resolvedParams = await searchParams;
