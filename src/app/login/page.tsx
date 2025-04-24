@@ -32,17 +32,7 @@ export default function Login() {
       router.push("/");
     }
   };
-//   return (
-//     <div>
-//       <h1>Đăng nhập</h1>
-//       <form onSubmit={handleSubmit}>
-//         <input type="email" name="email" placeholder="Email" required />
-//         <input type="password" name="password" placeholder="Mật khẩu" required />
-//         <button type="submit">Đăng nhập</button>
-//       </form>
-//     </div>
-//   );
-// }
+
 return (
   <div className="max-w-md mx-auto">
     <h1 className="text-3xl font-bold mb-6 text-center">Đăng Nhập</h1>

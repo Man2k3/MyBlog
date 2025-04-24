@@ -1,4 +1,3 @@
-// app/posts/[id]/page.ts
 import { notFound } from "next/navigation";
 import { Post } from "@/types/post";
 import { promises as fs } from "fs"; // Import fs từ Node.js
